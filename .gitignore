@@ -1,0 +1,30 @@
+# Start Generation Here
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore Streamlit specific files
+/.streamlit/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore data files
+data/
+*.csv
+*.xlsx
+
+# Ignore model files
+*.pkl
+*.joblib
+
+# Ignore logs
+*.log
+
+# End Generation Here
+.git
+venv/
