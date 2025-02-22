@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 from typing import Dict, Any
+from pages.suggesthospital import find_healthcare_providers
+
 from utils.model_loader import load_models  # Updated import
 
 from utils.style_loader import load_css
@@ -11,6 +13,7 @@ def disease_prediction():
                 unsafe_allow_html=True)
     
     # Rest of your code...
+models, label_encoder, symptom_list = load_models()
 
 def disease_prediction():
     load_css()
@@ -137,7 +140,7 @@ def predict_diabetes():
             else:
                 try:
                     input_data = np.array([[pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, dpf, age]])
-                    prediction = models["diabetes_best"].predict(input_data)
+                    prediction = models["diabetes"].predict(input_data)
                     result = "Positive for Diabetes. Consult a doctor!" if prediction[0] == 1 else "No Diabetes detected."
                     st.success(result)
                     if 'show_hospitals' not in st.session_state:
@@ -152,7 +155,7 @@ def predict_diabetes():
 
                     # Show hospital search if button was clicked
                     if st.session_state.show_hospitals:
-                        suggest_hospitals()
+                        find_healthcare_providers()
                 except ValueError:
                     st.error("You entered the wrong input, please enter the correct input.")
                 pass

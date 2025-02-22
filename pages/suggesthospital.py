@@ -6,10 +6,14 @@ from geopy.distance import geodesic
 import requests
 import time
 import os
+from utils.style_loader import load_css
+
+
 
 print("Current file path:", os.path.abspath(__file__))
 
 def get_nearby_healthcare(lat, lon, radius=5000):
+    load_css()
     """
     Use OpenStreetMap's Overpass API to find healthcare facilities.
     This is completely free and doesn't require an API key.
@@ -35,8 +39,10 @@ def get_nearby_healthcare(lat, lon, radius=5000):
     except Exception as e:
         st.error(f"Error fetching healthcare providers: {str(e)}")
         return []
+    pass
 
 def find_healthcare_providers():
+    load_css()
     st.title("🏥 Find Nearby Healthcare Providers")
     
     # Initialize session state for location
@@ -46,8 +52,8 @@ def find_healthcare_providers():
     # Location input
     st.write("### 📍 Your Location")
     location_method = st.radio(
-        "How would you like to provide your location?",
-        ["Enter Address", "Use Sample Location (New York)"]
+        "How would you like to enter your location?",
+        ["Enter Address", " Use Current Location"]
     )
     
     if location_method == "Enter Address":
@@ -68,14 +74,7 @@ def find_healthcare_providers():
                     st.error("Location not found. Please try a different address.")
             except Exception as e:
                 st.error(f"Error finding location: {str(e)}")
-    else:
-        # Use sample location (New York)
-        st.session_state.location = {
-            'lat': 40.7128,
-            'lng': -74.0060,
-            'address': "New York, NY"
-        }
-        st.success("📍 Using sample location: New York, NY")
+    
     
     # If we have a location, search for healthcare providers
     if st.session_state.location:
@@ -155,15 +154,11 @@ def find_healthcare_providers():
                     "No healthcare providers found in your area. "
                     "Try a different location or increase the search radius."
                 )
+                
+    pass
     
     # Add disclaimer
-    st.markdown("""
-    ---
-    **Disclaimer:** 
-    - This feature uses OpenStreetMap data, which may not include all healthcare providers.
-    - Always verify provider information independently.
-    - Consult with qualified healthcare professionals for medical advice.
-    """)
+    
 
 if __name__ == "__main__":
     st.set_page_config(

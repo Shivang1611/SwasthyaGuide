@@ -86,8 +86,7 @@ def show_prediction_results(disease_type: str, data):
             st.write("- Analysis confidence: High")
             
             # Add a button to find nearby hospitals
-            if st.button("🏥 Find Nearby Hospitals"):
-                suggest_hospitals()
+           
             
             st.info("We are working on improving the results. Check back soon for more detailed analysis.")
     else:

@@ -20,6 +20,9 @@ from pages.query import Query
 from pages.report_upload import create_report_upload_page
 from pages.about import about_page
 from pages.first_aid import show_first_aid_page
+from pages.suggesthospital import find_healthcare_providers
+from pages.govt_schemes import show_govt_schemes
+
 
 # Import utilities
 from utils.style_loader import load_css
@@ -27,6 +30,7 @@ from utils.model_loader import load_models
 
 # Page configuration
 st.set_page_config(
+    
     page_title="SwasthyaGuide",
     page_icon="🏥",
     layout="wide",
@@ -37,6 +41,7 @@ st.set_page_config(
         'About': "# Multiple Disease Prediction System\n This is a comprehensive health prediction system."
     }
 )
+
 
 # Load CSS
 load_css()
@@ -76,7 +81,7 @@ def load_all_models() -> None:
 def sidebar_menu():
     """Configure sidebar navigation"""
     with st.sidebar:
-        st.markdown("### 🏥 Menu")
+        st.markdown(""" <div class="sidebar-title"> 🏥 Menu </div> """, unsafe_allow_html=True)
         
         # Navigation buttons in a single column
         if st.button("🏠 Home", key='home', help="Go to Home page", use_container_width=True):
@@ -97,8 +102,16 @@ def sidebar_menu():
         if st.button("❓ Query", key='query', help="Send Query", use_container_width=True):
             st.session_state.page = "query"
         
+        
+            
+        if st.button("Suggest Hospitals", key='suggest', help="Suggest Hospitals", use_container_width=True):
+            st.session_state.page = "suggest"
+            
+        if st.button("Govt Schemes", key='govt', help="Govt Schemes", use_container_width=True):
+            st.session_state.page = "govt"
         if st.button("ℹ️ About", key='about', help="About Us", use_container_width=True):
             st.session_state.page = "about"
+            
 def home_content():
     # Hero Section
     st.markdown("""
@@ -111,44 +124,109 @@ def home_content():
     # Main Features Section
     st.markdown("## 🎯 Our Services")
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2,col3 = st.columns(3)
+    
     
     with col1:
         st.markdown("""
             <div class="feature-card">
-                <h3>🔍 Disease Prediction</h3>
-                <ul>
-                    <li>Symptom-based analysis</li>
-                    <li>Medical report analysis</li>
-                    <li>Quick health assessment</li>
-                </ul>
+                <h3>🚑 Emergency Aid</h3>
+                <p>
+                    First aid guide  
+                    Emergency procedure  
+                    Quick response tip  
+                </p>
             </div>
         """, unsafe_allow_html=True)
-    
+
+        # Button inside the box
+        if st.button("Get First Aid", key="first_aid"):
+            st.session_state.page = "firstaid"  # Navigate to First Aid Page
+            st.experimental_rerun()
+
     with col2:
-        st.markdown("""
-            <div class="feature-card">
-                <h3>💬 Health Assistant</h3>
-                <ul>
-                    <li>24/7 chat support</li>
-                    <li>Health advice</li>
-                    <li>Medical guidance</li>
-                </ul>
-            </div>
-        """, unsafe_allow_html=True)
+            st.markdown("""
+                <div class="feature-card">
+                    <h3>💬 Health Assistant</h3>
+                    <p>
+                        24/7 chat support  
+                        Health advice  
+                        Medical guidance  
+                    </p>
+                </div>
+            """, unsafe_allow_html=True)
+
+            # Button inside the box 
+            if st.button("Chat with Assistant", key="chat"):
+                st.session_state.page = "query"
+                st.experimental_rerun()
+                
+
+    # Button inside the box
+    
+
+        
+    col4,col5 = st.columns(2)
     
     with col3:
         st.markdown("""
+            
             <div class="feature-card">
-                <h3>🚑 Emergency Aid</h3>
-                <ul>
-                    <li>First aid guides</li>
-                    <li>Emergency procedures</li>
-                    <li>Quick response tips</li>
-                </ul>
+                <h3>🔍 Disease Prediction</h3>
+                <p>
+                    Symptom-based analysis  
+                    Medical report analysis 
+                    Quick health assessment 
+                </p>
             </div>
         """, unsafe_allow_html=True)
-    
+
+        # Button inside the box
+        if st.button("Predict Disease", key="predict"):
+            st.session_state.page = "symptoms"
+            st.experimental_rerun()
+            
+
+        
+        
+        
+        
+    with col4:
+        st.markdown("""
+            <div class="feature-card" style="background-color: white; border-radius: 15px; padding: 25px; margin: 15px 0; 
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center;">
+                <h3 style="color: #1976d2;">Govt. Schemes</h3>
+                <p>
+                    Comprehensive health coverage<br>
+                    Financial protection for families<br>
+                    Access to quality healthcare services  
+                </p>
+                
+            </div>
+            
+        """, unsafe_allow_html=True)
+
+        if st.button("View Schemes", key="govt_schemes"):
+            st.session_state.page = "govt"  # Set session state for navigation
+            st.experimental_rerun()
+        
+    with col5:
+        st.markdown("""
+            <div class="feature-card" style="background-color: white; border-radius: 15px; padding: 25px; margin: 15px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <h3 style="color: #1976d2;">Suggest Hospitals</h3>
+                <p>
+                    Find nearby healthcare providers<br>
+                    Locate hospitals and clinics<br>
+                    Get medical assistance   
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
+
+    # Add the button below the card content
+         # Update the session state to navigate to the govt schemes page
+        if st.button("Find Hospitals", key="find_hospitals"):
+            st.session_state.page = "suggest"
+            st.experimental_rerun()
     # How It Works Section
     st.markdown("## 🔄 How It Works")
     
@@ -202,7 +280,14 @@ def main():
             Query()
             
         elif st.session_state.page == "about":
+            
             about_page()
+        elif st.session_state.page == "suggest":
+            find_healthcare_providers()
+        elif st.session_state.page == "govt":
+            show_govt_schemes()
+        
+        
             
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
