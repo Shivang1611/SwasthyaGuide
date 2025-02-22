@@ -1,4 +1,4 @@
-markdown
+
 # SwasthyaGuide - Your Personal Health Assistant
 
 SwasthyaGuide is a Streamlit-based health app designed to provide quick and easy access to vital health information and services.  It offers a range of features, from disease prediction and first aid information to details on government healthcare policies and a WhatsApp chatbot integration.
@@ -42,7 +42,7 @@ SwasthyaGuide aims to empower users with the information they need to manage the
 
 1. Clone the repository:
    bash
-   git clone 
+   git clone https://github.com/Shivang1611/SwasthyaGuide
    
 
 2. Navigate to the project directory:
