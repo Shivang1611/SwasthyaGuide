@@ -1,6 +1,8 @@
 
 # SwasthyaGuide - Your Personal Health Assistant
 
+#### [Live Here](https://swasthyaguide.streamlit.app/)
+
 SwasthyaGuide is a Streamlit-based health app designed to provide quick and easy access to vital health information and services.  It offers a range of features, from disease prediction and first aid information to details on government healthcare policies and a WhatsApp chatbot integration.
 
 ## Table of Contents
@@ -10,10 +12,8 @@ SwasthyaGuide is a Streamlit-based health app designed to provide quick and easy
 * [Technologies Used](#technologies-used)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Project Structure](#project-structure)
 * [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
+
 
 ## Introduction
 
@@ -22,6 +22,8 @@ SwasthyaGuide aims to empower users with the information they need to manage the
 ## Features
 
 * **WhatsApp Chatbot:** Interact with a chatbot directly through WhatsApp for quick answers to common health questions.  (Explain how the chatbot is integrated and what it can do.  Mention any specific commands or functionalities.)
+
+**Note** works only on test mobile number
 * **Disease Prediction:**  Enter your symptoms to receive potential disease predictions based on a trained machine learning model. (Mention the accuracy or limitations of the model.  Explain what type of diseases are covered.)
 * **Report Generation:** Generate comprehensive health reports based on user input and disease prediction results. (Describe the content of the report.)
 * **First Aid Information:** Access a comprehensive database of first aid procedures for various common ailments. (Mention the source of the first aid information.)
@@ -46,31 +48,31 @@ SwasthyaGuide aims to empower users with the information they need to manage the
    
 
 2. Navigate to the project directory:
-   bash
+   ```bash
    cd SwasthyaGuide
-   
+   ```
 
 3. Create a virtual environment (recommended):
-   bash
+   ```bash
    python3 -m venv venv  # Or python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
-   
+   ```
 
 4. Install the required packages:
-   bash
+   ```bash
    pip install -r requirements.txt  # Create a requirements.txt file listing all dependencies
-   
+   ```
    
 
 
 ## Usage
 
 1. Run the Streamlit app:
-   bash
-   streamlit run app.py  # Replace app.py with the name of your main Streamlit file
-   
+   ```bash
+   python -m streamlit run pages/home.py  
+   ```
 
-2. Access the app in your web browser at the provided URL.
+2. Access the app in your web browser at [streamlit](https://swasthyaguide.streamlit.app/).
 
 3. Follow the on-screen instructions to use the different features.
 
