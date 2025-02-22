@@ -8,6 +8,7 @@ import time
 import sys
 from typing import Dict, Any, Optional
 from pathlib import Path
+
 st.set_page_config(
     
     page_title="SwasthyaGuide",
@@ -39,7 +40,7 @@ from pages.govt_schemes import show_govt_schemes
 from utils.style_loader import load_css
 from utils.model_loader import load_models
 
-# Page configuration
+
 
 
 
@@ -153,20 +154,22 @@ def home_content():
                         Health advice  
                         Medical guidance  
                     </p>
-                </div>
+                    <a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/02/22/04/20250222043349-IR53AKZ3.json" class="whatsapp-button" target="_blank">
+                    Chat Now
+                </a>
+                    
+                 </div>
             """, unsafe_allow_html=True)
 
-            # Button inside the box 
-            if st.button("Chat with Assistant", key="chat"):
-                st.session_state.page = "query"
-                st.experimental_rerun()
+           
+            
                 
-
-    # Button inside the box
+    
+   
     
 
         
-    col4,col5 = st.columns(2)
+    col4,col5 ,col6= st.columns(3)
     
     with col3:
         st.markdown("""
@@ -221,13 +224,60 @@ def home_content():
                 </p>
             </div>
         """, unsafe_allow_html=True)
-
-    # Add the button below the card content
-         # Update the session state to navigate to the govt schemes page
+    
         if st.button("Find Hospitals", key="find_hospitals"):
             st.session_state.page = "suggest"
             st.experimental_rerun()
-    # How It Works Section
+        
+    with col6:
+        st.markdown(
+            """
+            <style>
+                .feature-card {
+                    background-color: #f9f9f9;
+                    padding: 15px;
+                    border-radius: 10px;
+                    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+                    text-align: center;
+                }
+                .feature-card h3 {
+                    color: #2C3E50;
+                }
+                .feature-card p {
+                    color: #7F8C8D;
+                }
+                .whatsapp-button {
+                    display: inline-block;
+                    background-color: #25D366;
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    margin-top: 10px;
+                    transition: background-color 0.3s;
+                }
+                .whatsapp-button:hover {
+                    background-color: #1EBE5D;
+                }
+            </style>
+
+            <div class="feature-card">
+                <h3>WhatsApp Bot</h3>
+                <p>
+                    ✅ Get first aid tips<br>
+                    🚑 Emergency response<br>
+                    🏥 Quick medical advice<br>
+                    ⏳ 24/7 support
+                </p>
+                <a href="https://wa.me/15551934730?text=Hi!" class="whatsapp-button" target="_blank">
+                    Chat on WhatsApp
+                </a>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+# How It Works Section
     st.markdown("## 🔄 How It Works")
     
     steps = {
@@ -297,3 +347,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
+    
+#https://wa.me/15551934730?text=Hi!
