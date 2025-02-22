@@ -8,7 +8,18 @@ import time
 import sys
 from typing import Dict, Any, Optional
 from pathlib import Path
-
+st.set_page_config(
+    
+    page_title="SwasthyaGuide",
+    page_icon="🏥",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://github.com/yourusername/your-repo',
+        'Report a bug': "https://github.com/yourusername/your-repo/issues",
+        'About': "# Multiple Disease Prediction System\n This is a comprehensive health prediction system."
+    }
+)
 
 app_dir = Path(__file__).parent.parent
 sys.path.append(str(app_dir))
@@ -29,18 +40,7 @@ from utils.style_loader import load_css
 from utils.model_loader import load_models
 
 # Page configuration
-st.set_page_config(
-    
-    page_title="SwasthyaGuide",
-    page_icon="🏥",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://github.com/yourusername/your-repo',
-        'Report a bug': "https://github.com/yourusername/your-repo/issues",
-        'About': "# Multiple Disease Prediction System\n This is a comprehensive health prediction system."
-    }
-)
+
 
 
 # Load CSS
