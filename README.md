@@ -35,10 +35,10 @@ SwasthyaGuide aims to empower users with the information they need to manage the
 * **NumPy:** For numerical computing and data manipulation.
 * **Pandas:** For data analysis and working with datasets.
 * **Joblib:** For saving and loading machine learning models.
-* **Pillow (PIL):** For image processing (if used for any visual elements).
 * **Scikit-learn:** For machine learning model training and evaluation.
 * **Google Colab:** For development and model training.
-* **WhatsApp API Integration (Specify library or method):**  For chatbot integration. (Be specific about how you integrated WhatsApp).
+* **Bot Press:** For user query and Knowledge base 
+* **WhatsApp API Integration:** Bootstrapped with botpress.
 
 ## Installation
 
